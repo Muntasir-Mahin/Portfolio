@@ -1211,3 +1211,69 @@ nav.wrap {
     font-size: 2rem;
   }
 }
+
+
+/* ============================================================
+   CLEAR SECTION SEPARATION
+   ============================================================ */
+
+/* Give every section more breathing space */
+main > section:not(.hero) {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+/* Remove the old faint dashed border */
+main > section + section {
+  border-top: none;
+}
+
+/* Add a clear colourful divider */
+main > section + section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 32px;
+  right: 32px;
+  height: 3px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--red),
+    var(--gold),
+    var(--cobalt),
+    var(--moss),
+    transparent
+  );
+}
+
+/* Small decorative mark in the middle */
+main > section + section::after {
+  content: "✦";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 0 14px;
+  background: var(--paper);
+  color: var(--red);
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Mobile spacing */
+@media (max-width: 600px) {
+  main > section:not(.hero) {
+    padding-top: 82px;
+    padding-bottom: 82px;
+  }
+
+  main > section + section::before {
+    left: 20px;
+    right: 20px;
+  }
+}
