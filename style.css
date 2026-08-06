@@ -1388,3 +1388,79 @@ main > section + section::after {
     right: 20px;
   }
 }
+
+/* ===== FINAL MOBILE NAV FIX ===== */
+@media screen and (max-width: 860px) {
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
+
+  nav.wrap {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  .logo {
+    display: block;
+    font-size: 1.8rem;
+    white-space: nowrap;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-left: auto;
+    position: relative;
+    z-index: 10001;
+  }
+
+  .nav-panel {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 15px;
+    margin-top: 14px;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    box-shadow: 4px 5px 0 var(--ink);
+    position: relative;
+    z-index: 10000;
+  }
+
+  nav.wrap.open .nav-panel {
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .nav-cta {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
