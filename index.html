@@ -12,17 +12,24 @@
 <header>
   <nav class="wrap">
     <a href="#home" class="logo"><span> Mohammad Mahin</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#toolkit">Toolkit</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#ventures">Ventures</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#sports">Sports</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Available for work</a>
+    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-panel" id="primary-nav">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#toolkit">Toolkit</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#ventures">Ventures</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#sports">Sports</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Available for work</a>
+    </div>
   </nav>
 </header>
 
@@ -682,5 +689,24 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
+<script>
+  const nav = document.querySelector('nav.wrap');
+  const toggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelectorAll('.nav-links a, .nav-cta');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
 </body>
 </html>

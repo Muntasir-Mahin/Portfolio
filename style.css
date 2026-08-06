@@ -151,6 +151,7 @@ nav.wrap {
   align-items: center;
   justify-content: space-between;
   height: 78px;
+  gap: 16px;
 }
 .logo {
   font-family: 'Caveat', cursive;
@@ -159,6 +160,13 @@ nav.wrap {
   color: var(--ink);
 }
 .logo span { color: var(--red); }
+
+.nav-panel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
 
 .nav-links {
   display: flex;
@@ -185,6 +193,29 @@ nav.wrap {
 .nav-cta:hover {
   transform: translate(-2px, -2px);
   box-shadow: 5px 5px 0 var(--ink);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--paper);
+  padding: 8px;
+  box-shadow: 3px 3px 0 rgba(43, 42, 40, 0.85);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .nav-toggle { display: none; }
@@ -513,13 +544,69 @@ footer .script { color: var(--red); }
   .hero { grid-template-columns: 1fr; }
   .portrait-frame { order: -1; width: 220px; }
   .about-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+
+  nav.wrap {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 16px 20px;
+    gap: 12px 16px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .logo {
+    width: auto;
+    text-align: left;
+  }
+
+  .nav-panel {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 6px;
+  }
+
+  nav.wrap.open .nav-panel {
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px 14px;
+    width: 100%;
+  }
+
+  .nav-cta {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 220px;
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
   .wrap { padding: 0 20px; }
   section { padding: 64px 0; }
   .stat-badges { grid-template-columns: 1fr 1fr; }
+
+  .nav-links {
+    font-size: 0.84rem;
+    gap: 8px 12px;
+  }
+
+  .nav-cta {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* ---------- reduced motion ---------- */
@@ -1199,12 +1286,19 @@ nav.wrap {
 
 /* Prevent crowding on smaller screens */
 @media (max-width: 1100px) {
+  .nav-panel {
+    gap: 12px;
+  }
+
   .nav-links {
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   nav.wrap {
-    height: 78px;
+    height: auto;
+    padding: 16px 24px;
   }
 
   .logo {
